@@ -1,0 +1,102 @@
+{
+  "id": "solidcraft-gears",
+  "name": "Gears",
+  "version": "0.1.1",
+  "description": "Involute spur gear generator: module, teeth, pressure angle, face width, bore and profile shift. Builds an editable sketch and features.",
+  "capabilities": [
+    "commands@0.1"
+  ],
+  "runtime": {
+    "module": "plugin.wasm",
+    "entries": [
+      {
+        "name": "make-gear",
+        "effect": "edit",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "module",
+            "teeth",
+            "face_width",
+            "pressure_angle"
+          ],
+          "properties": {
+            "module": {
+              "type": "number",
+              "title": "Module",
+              "description": "Module m. Pitch diameter = module x teeth",
+              "default": 2,
+              "minimum": 0.1,
+              "maximum": 100,
+              "unit": "mm"
+            },
+            "teeth": {
+              "type": "integer",
+              "title": "Teeth",
+              "description": "Number of teeth",
+              "default": 20,
+              "minimum": 8,
+              "maximum": 80
+            },
+            "face_width": {
+              "type": "number",
+              "title": "Face width",
+              "description": "Gear thickness",
+              "default": 10,
+              "minimum": 0.1,
+              "maximum": 1000,
+              "unit": "mm"
+            },
+            "pressure_angle": {
+              "type": "number",
+              "title": "Pressure angle",
+              "description": "Pressure angle of the tooth flanks",
+              "default": 20,
+              "minimum": 10,
+              "maximum": 30,
+              "unit": "°"
+            },
+            "bore_diameter": {
+              "type": "number",
+              "title": "Bore diameter",
+              "description": "Centre hole diameter, 0 for none",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 1000,
+              "unit": "mm"
+            },
+            "profile_shift": {
+              "type": "number",
+              "title": "Profile shift",
+              "description": "Profile shift coefficient x; outer diameter = module x (teeth + 2 + 2x)",
+              "default": 0,
+              "minimum": -1,
+              "maximum": 1
+            }
+          }
+        },
+        "slots": [
+          {
+            "kind": "menu",
+            "name": "Plugins"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      "solid.cylinder",
+      "solid.extrude",
+      "solid.pattern.circular",
+      "sketch.create",
+      "sketch.line",
+      "sketch.arc.three_point",
+      "sketch.spline.fit_point",
+      "sketch.finish"
+    ],
+    "limits": {
+      "fuel": 200000000,
+      "memory_mib": 64,
+      "deadline_ms": 30000
+    }
+  }
+}

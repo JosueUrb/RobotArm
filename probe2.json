@@ -1,0 +1,7 @@
+[
+  {"command":"sketch.create","params":{"plane":"XY","name":"Probe2"}},
+  {"command":"sketch.arc.three_point","params":{"start":[39.8,-3.4],"end":[39.2,-2.4],"through":[39.6,-2.8]}},
+  {"command":"sketch.arc.three_point","params":{"start":[39.2,-2.4],"end":[39.2,2.4],"through":[37.5,0]}},
+  {"command":"sketch.arc.three_point","params":{"start":[39.2,2.4],"end":[39.8,3.4],"through":[39.6,2.8]}},
+  {"command":"sketch.arc.three_point","params":{"start":[39.8,3.4],"end":[39.7,4.3],"through":[39.78,4.0]}}
+]
